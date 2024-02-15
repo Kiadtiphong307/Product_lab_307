@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Inertia\Inertia;
 
 class ProductController extends Controller
 {
@@ -14,10 +16,16 @@ class ProductController extends Controller
     {
         $products = Product::all();
 
-        return response()->json([
-            'message' => 'รายการสินค้าทั้งหมด',
-            'data' => $products
-        ], 200);
+        // return response()->json([
+        //     'message' => 'รายการสินค้าทั้งหมด',
+        //     'data' => $products
+        // ], 200);
+        
+        $products = DB::table('products')->get();
+        return Inertia::render('Products/Index', [
+            'products' => $products
+        ]);
+
 
     }
 

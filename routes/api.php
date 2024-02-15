@@ -20,9 +20,19 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-// Route::resource('product', ProductController::class);
-Route::resource('product',ProductController::class)->middleware('auth:sanctum');
+// Route::resource('product',ProductController::class)->middleware('auth:sanctum');
 
 Route::post('/login', [UserController::class, 'store']);
 
 Route::middleware('auth:sanctum')->delete('/logout/{user}', [UserController::class, 'destroy']);
+
+
+
+Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+    Route::get('/products', [ProductController::class, 'index'])->name('api.products.index');
+});
+
+
+
+
+
