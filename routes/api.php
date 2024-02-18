@@ -28,9 +28,11 @@ Route::middleware('auth:sanctum')->delete('/logout/{user}', [UserController::cla
 
 
 
-Route::middleware(['auth:sanctum', 'verified'])->group(function () {
-    Route::get('/products', [ProductController::class, 'index'])->name('api.products.index');
-});
+
+
+// Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+//     Route::get('/products', [ProductController::class, 'index'])->name('api.products.index');
+// });
 
 
 

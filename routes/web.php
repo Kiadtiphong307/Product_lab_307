@@ -37,16 +37,9 @@ Route::middleware([
         return Inertia::render('Dashboard');
     })->name('dashboard');
 
-    Route::get('/products', function () {
-        return Inertia::render('Products/Index');
-    })->name('products');
-
-  
-
-    // Route::resource('/products',ProductController::class);
     
-
-
+    Route::get('/products', [ProductController::class, 'index'])->name('products');
+   
 });
 
-// Route::get('/products', [ProductController::class, 'index'])->name('products');
+
