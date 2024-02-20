@@ -6,21 +6,28 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
+use Inertia\Inertia;
+
 
 class UserController extends Controller
 {
     /**
      * Show the form for creating the resource.
      */
-    public function create(): never
-    {
-        abort(404);
+
+
+     public function index()
+     {
+
+
     }
+
+
 
     /**
      * Store the newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request): \Illuminate\Http\JsonResponse
     {
         $request->validate([
             'email' => 'required|email',
@@ -36,7 +43,7 @@ class UserController extends Controller
             ]);
         }
     
-        $token = $user->createToken($request->device_name,abilities:['member'])->plainTextToken;
+        $token = $user->createToken($request->device_name, abilities:['member'])->plainTextToken;
     
         return response()->json(['token' => $token], 200);
     }
@@ -73,4 +80,6 @@ class UserController extends Controller
         $user->tokens()->delete();
         return response()->json(['message' => 'Logged out'], 200);
     }
+
+    
 }
