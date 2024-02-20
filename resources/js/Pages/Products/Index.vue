@@ -1,8 +1,9 @@
 <script setup>
 import ProductLogo from '@/Components/Logo/ProductLogo.vue';
 import AppLayout from '@/Layouts/AppLayout.vue';
-
 import { defineProps } from 'vue';
+
+
 
 const props = defineProps({
     products: {
@@ -10,6 +11,8 @@ const props = defineProps({
         required: true,
     },
 });
+
+
 
 
 </script>

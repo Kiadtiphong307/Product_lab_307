@@ -17,7 +17,14 @@ class ProductController extends Controller
         return Inertia::render('Products/Index', [
             'products' => $products
         ]);
-       
+
+        // return response()->json([
+        //     'message' => 'รายการสินค้าทั้งหมด',
+        //     'data' => $products
+        // ], 200);
+
+
+
     }
 
 }
